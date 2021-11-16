@@ -35,7 +35,7 @@ Furthermore it is also possible to format the date like
 
     s = s.ReplaceFormattedDate(new DateTime(1982, 3, 7, 6, 0, 0, DateTimeKind.Utc));
 	
-	//output: "{1982-03-07 06:00}";
+    //output: "{1982-03-07 06:00}";
 ```
 
 to get '{1982-03-07 06:00}' as a result.
