@@ -1,13 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>mitoSoft</Authors>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Copyright>(c) mitoSoft</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>mitoSoft.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>string extension class for search values between curly brackets</Description>
+    <PackageTags>string extensions</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
