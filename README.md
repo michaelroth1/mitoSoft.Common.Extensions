@@ -42,7 +42,7 @@ The following code snipped represents these relationships
     //output: "some message form mitoSoft at Dec 24.";
 ```
 
-Furthermore it is also possible to format the date like
+Furthermore it is also possible to use date-format-patterns like
 
 ```c#
     var s = "{{Date:yyyy}-{DATE:MM}-{Date:dd} {date:HH:mm}}";
@@ -56,7 +56,7 @@ to get
 
 ```c#
 {1982-03-07 06:00}
-```c#
+```
 
 as a result.
  
