@@ -43,14 +43,23 @@ namespace mitoSoft.Common.Extensions
             return text.ReplaceBetween("{", "}", find, replace);
         }
 
-        public static string ReplaceFormattedDate(this string value, DateTime date, string defaultFormat = "yyyy-MM-dd HH:mm:ss fff")
+        public static string ReplaceFormattedDate(this string value, DateTime date)
+        {
+            return value.ReplaceFormattedDate(date, "yyyy-MM-dd HH:mm:ss fff");
+        }
+        public static string ReplaceFormattedDate(this string value, DateTime date, string defaultFormat)
+        {
+            return value.ReplaceFormattedDate(date, defaultFormat, null);
+        }
+
+        public static string ReplaceFormattedDate(this string value, DateTime date, string defaultFormat, IFormatProvider provider)
         {
             var s = value.Replace("{", "{#").Replace("}", "#}");
             s = s.ReplaceBetween("{#", "#}", "date", "{date}");
             s = s.ReplaceBetween("{#", ":", "date", "{date:");
             s = s.Replace("#}", "}");
             s = s.Replace("{#", "{");
-            s = date.ToFormatted(s, defaultFormat);
+            s = date.ToFormatted(s, defaultFormat, provider);
             return s;
         }
     }

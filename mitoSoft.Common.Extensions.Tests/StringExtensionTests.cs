@@ -76,5 +76,16 @@ namespace mitoSoft.Common.Extensions.Tests
 
             Assert.AreEqual("some message form mitoSoft at Dec 24.", s);
         }
+
+        [TestMethod]
+        public void Test6()
+        {
+            var s = "some message form {find} at {DATE :MMM dd}.";
+
+            s = s.ReplaceBetweenBrackets("find", "mitoSoft");
+            s = s.ReplaceFormattedDate(new DateTime(2021, 12, 24), "yyyyMMdd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
+            Assert.AreEqual("some message form mitoSoft at Dec 24.", s);
+        }
     }
 }
