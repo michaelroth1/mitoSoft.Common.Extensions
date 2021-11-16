@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>1.0.1</Version>
+    <Authors>mitoSoft</Authors>
+    <Description>string extension methods</Description>
+    <Copyright>(c) mitoSoft</Copyright>
+    <PackageIcon>mitoSoft.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/michaelroth1/mitoSoft.Common.Extensions</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>string extensions</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\mitoSoft.Razor.Logging\mitoSoft.Razor.Logging\mitoSoft.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
