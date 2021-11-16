@@ -1,21 +1,35 @@
 # mitoSoft.Common.Extensions
 
 This library provides search function for pattern search between curly brackets {...}.
-In case of the input string 'test message form {find}' and the following code snipped
+In case of the input string 
+
+```c#
+test message form {find}
+```
+
+ and the following code snipped
 
 ```c#
 s = s.ReplaceBetweenBrackets("find", "mitoSoft");
 ```
 
-the output is generated as 'test message form {mitoSoft}'.
+the output is generated as 
+
+```c#
+test message form mitoSoft.
+```
 
 By using this function it s also possible to replace the date in the actual string. An example could be the replacement of the string
 
-'some message form {find} at {date}'
+```c#
+some message form {find} at {date}
+```
 
 to 
 
-'some message form mitoSoft at Dec 24'.
+```c#
+some message form mitoSoft at Dec 24.
+```
 
 The following code snipped represents these relationships
 
@@ -38,6 +52,12 @@ Furthermore it is also possible to format the date like
     //output: "{1982-03-07 06:00}";
 ```
 
-to get '{1982-03-07 06:00}' as a result.
+to get 
 
+```c#
+{1982-03-07 06:00}
+```c#
+
+as a result.
+ 
 For more examples see the testclasses in [testproject](mitoSoft.Common.Extensions.Tests).
