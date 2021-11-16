@@ -9,7 +9,7 @@ s = s.ReplaceBetweenBrackets("find", "mitoSoft");
 
 the output is generated as 'test message form {mitoSoft}'.
 
-By using this function it s also possible to replace the date in the actual string like
+By using this function it s also possible to replace the date in the actual string. An example could be the replacement of the string
 
 'some message form {find} at {date}'
 
