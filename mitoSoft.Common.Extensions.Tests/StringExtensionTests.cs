@@ -65,5 +65,16 @@ namespace mitoSoft.Common.Extensions.Tests
 
             Assert.AreEqual("{1982-03-07 06:00} [warn] Some message...", s);
         }
+
+        [TestMethod]
+        public void Test5()
+        {
+            var s = "some message form {find} at {date}.";
+
+            s = s.ReplaceBetweenBrackets("find", "mitoSoft");
+            s = s.ReplaceBetweenBrackets("date", new DateTime(2021, 12, 24).ToString("MMM dd", System.Globalization.CultureInfo.InvariantCulture));
+
+            Assert.AreEqual("some message form mitoSoft at Dec 24.", s);
+        }
     }
 }
