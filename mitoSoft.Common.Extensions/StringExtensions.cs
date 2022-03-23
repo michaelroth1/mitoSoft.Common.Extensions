@@ -6,10 +6,52 @@ namespace mitoSoft.Common.Extensions
 {
     public static class StringExtensions
     {
-        public static List<string> FindBetween(this string value, string start, string end)
+        public static bool ContainsLike(this string source, string like)
+        {
+            if (string.IsNullOrEmpty(source))
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+            else if (string.IsNullOrWhiteSpace(like))
+            {
+                return true;
+            }
+            else if (!like.Replace("*", "%").Contains("%"))
+            {
+                return source.Contains(like);
+            }
+            else
+            {
+                like = like.Replace("*", "%");
+                return Regex.IsMatch(source, "^" + Regex.Escape(like).Replace("_", ".").Replace("%", ".*") + "$");
+            }
+        }
+
+        public static List<string> FindBetween(this string value, string start, string end, bool exact = true)
         {
             var result = new List<string>();
-            var pattern = @"\" + start + @"(.*?)\" + end;
+            string pattern;
+            if (value.IndexOf(end) < 0 && exact == false) //not found
+            {
+                pattern = @"(?<=" + start + @").*$";
+            }
+            else if (value.IndexOf(end) < 0 && exact) 
+            {
+                throw new InvalidOperationException($"End tag '{end}' not found.");
+            }
+            else if (value.IndexOf(start) < 0 && exact == false) //not found
+            {
+                pattern = @".+?(?=" + end + @")";
+            }
+            else if (value.IndexOf(start) < 0 && exact)
+            {
+                throw new InvalidOperationException($"Start tag '{start}' not found.");
+            }
+            else
+            {
+                pattern = @"(?<=" + start + @").*?(?=" + end + @")";
+            }
+
             var matches = Regex.Matches(value, pattern);
 
             foreach (Match match in matches)
@@ -29,9 +71,9 @@ namespace mitoSoft.Common.Extensions
         {
             foreach (string match in text.FindBetween(start, end))
             {
-                if (match.ToLower().Replace(" ", "") == (start + find + end).ToLower())
+                if (match.ToLower().Replace(" ", "") == find.ToLower())
                 {
-                    text = text.Replace(match, replace);
+                    text = text.Replace(start + match + end, replace);
                 }
             }
 
@@ -47,6 +89,7 @@ namespace mitoSoft.Common.Extensions
         {
             return value.ReplaceFormattedDate(date, "yyyy-MM-dd HH:mm:ss fff");
         }
+
         public static string ReplaceFormattedDate(this string value, DateTime date, string defaultFormat)
         {
             return value.ReplaceFormattedDate(date, defaultFormat, null);

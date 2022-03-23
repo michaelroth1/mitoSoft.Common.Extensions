@@ -27,9 +27,9 @@ namespace mitoSoft.Common.Extensions
         {
             foreach (string match in text.FindBetween("{date:", "}"))
             {
-                var format = match.Replace("{date:", "").TrimEnd('}');
+                var format = match.Trim();
                 string dateString = date.ToString(format, provider);
-                text = text.Replace(match, dateString);
+                text = text.Replace("{date:" + match + "}", dateString);
             }
 
             return text;
