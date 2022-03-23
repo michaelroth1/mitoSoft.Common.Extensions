@@ -27,6 +27,19 @@ namespace mitoSoft.Common.Extensions
             }
         }
 
+        /// <summary>
+        /// Searches for strings between given start- und end-strings.
+        /// </summary>
+        /// <param name="exact">
+        ///     Allows a week search condition (true is default):
+        ///         1. If start is not found -> search from first charakter</param>
+        ///         2. If end is not found -> search to end</param>
+        /// <example>
+        /// 'start my text end' results in ' my text ' when start is 'start' and end is 'end'
+        /// </example>
+        /// <exception cref="InvalidOperationException">
+        /// Throws, whenever no start or end is found and exact is set.  
+        /// </exception>
         public static List<string> FindBetween(this string value, string start, string end, bool exact = true)
         {
             var result = new List<string>();
